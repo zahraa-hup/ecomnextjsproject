@@ -19,9 +19,9 @@ function Navbuttons() {
   const router = useRouter();
   useEffect(
     function () {
-      if (localStorage.getItem("cartnum") == null) {
+      /*if (localStorage.getItem("cartnum") == null) {
         setcartnum(0);
-      } else {
+      } else */
         if (user) {
           axios
             .get(
@@ -31,7 +31,7 @@ function Navbuttons() {
               setcartnum(res?.data?.length);
             });
         }
-      }
+      
     },
     [user]
   );

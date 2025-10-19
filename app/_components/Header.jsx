@@ -23,8 +23,8 @@ function Header() {
   return (
     <>
       {path === "/sign-in" ||
-      path === "/sign-up" ||
-      path == "/success" ? null : (
+        path === "/sign-up" /*||
+      path == "/success" */? null : (
         <header className="bg-white relative">
           <div className=" mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-2 sm:px-4 lg:px-8 shadow-md shadow-blue-100 ">
             <Link className="block text-teal-600" href="/">

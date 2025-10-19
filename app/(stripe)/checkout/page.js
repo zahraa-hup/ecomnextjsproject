@@ -24,9 +24,10 @@ async function page({ searchParams }) {
        quantity: 1,
      },
    ],
-   success_url: "http://localhost:3000/success",
-   cancel_url: "http://localhost:3000/cancel",
-   
+   //success_url: "http://localhost:3000/success",
+   //cancel_url: "http://localhost:3000/cancel",
+   success_url: "https://ecomnextjsproject.vercel.app/success",
+   cancel_url: "https://ecomnextjsproject.vercel.app/cancel",
  });
  redirect(session.url)
 }

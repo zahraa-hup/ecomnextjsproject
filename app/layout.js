@@ -1,5 +1,10 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Header from "./_components/Header";
+import Footer from "./_components/Footer";
+import { ClerkProvider } from "@clerk/nextjs";
+import { CartContextProvider } from "./_context/cartcontext";
+import Scrollbtn from "./_components/Scrollbtn";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,12 +23,35 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+    <ClerkProvider
+      publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
+    >
+      <html lang="en" className="scroll-smooth">
+        <head>
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossOrigin=""
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet"
+          ></link>
+        </head>
+
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased relative `}
+        >
+          <CartContextProvider>
+            <Header />
+
+            {children}
+            <Footer />
+            <Scrollbtn />
+          </CartContextProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
